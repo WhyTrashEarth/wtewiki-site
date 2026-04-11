@@ -1,10 +1,172 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = [
+  {
+    name: '🌎 WhyTrashEarth.org ',
+    url: 'https://whytrashearth.org',
+    desc: 'Primary site for WhyTrashEarth and its overall mission.'
+  },
+  {
+    name: '🌬️ AIRVENTAWARE.ORG',
+    url: 'https://airventaware.org',
+    desc: 'Focused on air quality awareness and ventilation system cleanliness.'
+  },
+  {
+    name: '🌬️ AIRIVENTURI.COM',
+    url: 'https://airiventuri.com',
+    desc: 'Home of Airi Venturi, International Air Quality Consultant.'
+  },
+  {
+    name: '⚠️ UXO.INFO',
+    url: 'https://uxo.info',
+    desc: 'Documentation and awareness of unexploded ordnance and environmental impact.'
+  },
+  {
+    name: '🐟 MENHADEN.ECO',
+    url: 'https://menhaden.eco',
+    desc: 'Research and awareness surrounding menhaden fishing and ecosystem impact.'
+  },
+  {
+    name: '🏞️ MEKONG.EARTH',
+    url: 'https://mekong.earth',
+    desc: 'Environmental focus on the Mekong region and its ecosystems.'
+  },
+  {
+    name: '🐳 WHALING.WATCH',
+    url: 'https://whaling.watch',
+    desc: 'Tracking and awareness related to global whaling activity.'
+  },
+  {
+    name: '✈️ PLASTICFREE.FLIGHTS',
+    url: 'https://plasticfree.flights',
+    desc: 'Exploring reduction of plastic use in aviation environments.'
+  },
+  {
+    name: '👠 ENDFAST.FASHION',
+    url: 'https://endfast.fashion',
+    desc: 'Addressing waste and impact from fast fashion systems.'
+  },
+  {
+    name: '🛢️ ECOWASTEWORLDWIDE.ORG',
+    url: 'https://ecowasteworldwide.org',
+    desc: 'Global perspective on waste systems and environmental impact.'
+  },
+  {
+    name: '🌐 GLOBALAIRREGISTRY.ORG',
+    url: 'https://globalairregistry.org',
+    desc: 'Concept for tracking and standardizing air quality data globally.'
+  },
+  {
+    name: '🏖️ SANDIEGOSEWAGE.ORG',
+    url: 'https://sandiegosewage.org',
+    desc: 'Focused on sewage infrastructure and coastal environmental concerns.'
+  },
+  {
+    name: '🍷 WINEWASTE.ORG',
+    url: 'https://winewaste.org',
+    desc: 'Exploring waste and sustainability in wine production.'
+  },
+  {
+    name: '🔋 RELIVENV.ORG',
+    url: 'https://relivenv.org',
+    desc: 'Regional environmental initiatives focused on Nevada.'
+  },
+  {
+    name: '⛰️ WHYTRASHTAHOE.ORG',
+    url: 'https://whytrashtahoe.org',
+    desc: 'Environmental efforts focused on Lake Tahoe and surrounding areas.'
+  },
+  {
+    name: '🐦‍⬛ CROWCRB.ORG',
+    url: 'https://crowcrb.org',
+    desc: 'Community-focused environmental documentation and initiatives.'
+  },
+  {
+    name: '🔥 ARSON.NEWS',
+    url: 'https://arson.news',
+    desc: 'Monitoring and documenting fire-related environmental events.'
+  },
+  {
+    name: '⚽ MAKETHEGOAL.ORG',
+    url: 'https://makethegoal.org',
+    desc: 'Initiative focused on measurable environmental progress and outcomes.'
+  },
+  {
+    name: '🐴 NV.HORSE',
+    url: 'https://nv.horse',
+    desc: 'Neutral informational resource related to horse-related topics.'
+  }
+];
 ---
 
 <BaseLayout title="WTEWiki">
   <main class="container">
-    <h1>WTEWiki</h1>
-    <p>WTE Wiki is the official record and collection of WhyTrashEarth's network of projects</p>
+    <h1>WTE Wiki</h1>
+    <p class="intro">
+      The official record and collection of WhyTrashEarth's network of projects.
+    </p>
+
+    <section class="projects">
+      <h2>Project Index</h2>
+
+      <div class="grid">
+        {projects.map((project) => (
+          <a href={project.url} class="card" target="_blank" rel="noopener noreferrer">
+            <h3>{project.name}</h3>
+            <p>{project.desc}</p>
+          </a>
+        ))}
+      </div>
+    </section>
   </main>
 </BaseLayout>
+
+<style>
+  .intro {
+    max-width: 700px;
+    margin-bottom: 2rem;
+    color: #ffffff;
+    line-height: 1.6;
+  }
+
+  .projects h2 {
+    margin-bottom: 1rem;
+  }
+
+  .grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 1fr;
+  max-width: 800px;
+  margin: 0 auto;
+}
+  .card {
+    display: block;
+    text-decoration: none;
+    background: white;
+    border: 1px solid #e5e5e5;
+    border-radius: 12px;
+    padding: 1rem;
+    transition: 0.15s ease;
+  }
+
+  .card:hover {
+    border-color: #b81212;
+    transform: translateY(-2px);
+  }
+
+  .card h3 {
+    margin: 0 0 0.4rem;
+    font-size: 0.9rem;
+    letter-spacing: 0.09em;
+    color: #000000;
+  }
+
+  .card p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: #2f2f2f;
+    line-height: 1.5;
+  }
+</style>

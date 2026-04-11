@@ -3,11 +3,11 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import { t } from "@/i18n/ui";
 const locale = Astro.currentLocale;
 ---
-<BaseLayout title={t(locale, "contact_title")} description="Contact WTEWiki.">
+<BaseLayout title={t(locale, "contact_title")} description="Contact WTE Wiki.">
   <section class="card p-24" aria-labelledby="contact-title">
     <h1 id="contact-title" class="h1">{t(locale, "contact_title")}</h1>
     <p class="muted" style="max-width: 75ch; line-height: 1.65;">
-      Replace this with your preferred contact method (email, form provider, or mail address).
+      Please contact us with any questions or messages 
     </p>
 
     <hr class="hr" />
@@ -39,7 +39,7 @@ const locale = Astro.currentLocale;
           style="cursor:not-allowed; border-color: rgba(225,6,0,0.35); font-weight:800;"
           aria-disabled="true"
         >
-          Submit Your Awesome Message
+          Submit Your Awesome Message Please
         </button>
       </div>
     </form>
