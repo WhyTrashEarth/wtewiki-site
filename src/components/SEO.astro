@@ -25,6 +25,7 @@ const finalCanonical = canonical ?? url;
 
 const ogUrl = finalCanonical;
 const ogImg = ogImage.startsWith("http") ? ogImage : (site ? `${site}${ogImage}` : ogImage);
+const ogImageAlt = `${SITE.name} — ${description}`;
 ---
 
 <meta charset="utf-8" />
@@ -32,6 +33,7 @@ const ogImg = ogImage.startsWith("http") ? ogImage : (site ? `${site}${ogImage}`
 
 <title>{finalTitle}</title>
 <meta name="description" content={description} />
+<link rel="canonical" href={finalCanonical} />
 
 <link rel="icon" type="image/png" href="/favicon.png" />
 
@@ -43,9 +45,11 @@ const ogImg = ogImage.startsWith("http") ? ogImage : (site ? `${site}${ogImage}`
 <meta property="og:description" content={description} />
 <meta property="og:url" content={ogUrl} />
 <meta property="og:image" content={ogImg} />
+<meta property="og:image:alt" content={ogImageAlt} />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content={finalTitle} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImg} />
+<meta name="twitter:image:alt" content={ogImageAlt} />

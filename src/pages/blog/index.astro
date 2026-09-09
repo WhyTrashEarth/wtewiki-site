@@ -1,14 +1,7 @@
 ---
-import BaseLayout from '../../layouts/BaseLayout.astro';
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+const posts = (await getCollection("blog")).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
-
-<BaseLayout title="Updates | WTEWiki">
-  <main class="container">
-    <h1>Updates</h1>
-    <p>Updates, findings, and project logs will be published here. As of April 11th 2026, all our sites are active... All new updates will be new blog posts </p>
-
-    <hr />
-
-    <p>No posts yet. More coming soon.</p>
-  </main>
-</BaseLayout>
+<BaseLayout title="Updates" description="Updates, findings, and project notes from WhyTrashEarth."><section class="content" aria-labelledby="updates-title"><p class="eyebrow">Notes and progress</p><h1 id="updates-title">Updates</h1><p class="intro">New posts, findings, and project logs will appear here.</p><div class="posts">{posts.map((post) => (<a class="post card p-24" href={`/blog/${post.id}/`}><p class="eyebrow">{post.data.pubDate.toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p><h2>{post.data.title}</h2>{post.data.description && <p>{post.data.description}</p>}<span>Read update →</span></a>))}</div></section></BaseLayout>
+<style>.intro { font-size: 1.15rem; margin-bottom: 2rem; }.posts { display: grid; gap: 1rem; }.post { display: block; text-decoration: none; }.post p:not(.eyebrow) { color: var(--color-muted); }.post span { color: var(--color-accent); font-weight: 700; }</style>
