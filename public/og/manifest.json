@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-10-02",
+  "assets": [
+    {
+      "id": "wtewiki-default-v1",
+      "url": "https://wte.wiki/og/wtewiki/default-v1.jpg",
+      "mimeType": "image/jpeg",
+      "width": 1200,
+      "height": 630,
+      "alt": "WTE Wiki Open Graph image",
+      "status": "active"
+    }
+  ],
+  "policy": "Versioned asset URLs are permanent. Publish a new versioned filename for replacement artwork; do not overwrite an existing asset URL."
+}
