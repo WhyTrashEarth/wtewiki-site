@@ -1,21 +1,18 @@
 ---
 import { t } from "@/i18n/ui";
-
 const locale = Astro.currentLocale;
+const currentPath = Astro.url.pathname;
+const isCurrent = (href: string) => href === "/" ? currentPath === "/" : currentPath === href || currentPath.startsWith(`${href}/`);
 ---
-<header class="container" role="banner" aria-label="Site header" style="padding-top: 1.25rem;">
-  <nav aria-label="Primary" style="display:flex; gap:1rem; align-items:center; justify-content:space-between;">
-    <a href="/" style="font-weight:800; letter-spacing:-0.02em; text-decoration:none;">
-      WTE Wiki <span aria-hidden="true" style="color:var(--color-accent);">●</span>
-    </a>
-
-    <div style="display:flex; gap:0.85rem; flex-wrap:wrap; justify-content:flex-end;">
-      <a href="/start-here">Start Here</a>
-      <a href="/projects">Projects</a>
-      <a href="/blog">Updates</a>
-      <a href="/open-graph">OG assets</a>
-      <a href="/about">{t(locale, "nav_about")}</a>
-      <a href="/contact">{t(locale, "nav_contact")}</a>
+<header class="container" role="banner" aria-label="Site header" style="padding-top:1.25rem;">
+  <nav aria-label="Primary" class="site-nav">
+    <a href="/" class:list={["site-name", { active: isCurrent("/") }]} aria-current={isCurrent("/") ? "page" : undefined}>WTE Wiki <span aria-hidden="true">●</span></a>
+    <div class="nav-links">
+      <a href="/projects" class:list={{ active: isCurrent("/projects") }} aria-current={isCurrent("/projects") ? "page" : undefined}>Projects</a>
+      <a href="/blog" class:list={{ active: isCurrent("/blog") }} aria-current={isCurrent("/blog") ? "page" : undefined}>Updates</a>
+      <a href="/about" class:list={{ active: isCurrent("/about") }} aria-current={isCurrent("/about") ? "page" : undefined}>{t(locale, "nav_about")}</a>
+      <a href="/contact" class:list={{ active: isCurrent("/contact") }} aria-current={isCurrent("/contact") ? "page" : undefined}>{t(locale, "nav_contact")}</a>
     </div>
   </nav>
 </header>
+<style>.site-nav{display:flex;gap:1rem;align-items:center;justify-content:space-between}.site-name{font-weight:800;letter-spacing:-.02em;text-decoration:none}.site-name span{color:var(--color-accent)}.nav-links{display:flex;gap:.85rem;flex-wrap:wrap;justify-content:flex-end}.active{color:var(--color-accent);font-weight:700}</style>

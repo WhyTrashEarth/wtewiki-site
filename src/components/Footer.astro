@@ -1,64 +1,11 @@
 ---
+const currentPath = Astro.url.pathname;
+const isCurrent = (href: string) => href === "/" ? currentPath === "/" : currentPath === href || currentPath.startsWith(`${href}/`);
+const links = [["Home", "/"], ["Start Here", "/start-here"], ["Projects", "/projects"], ["Updates", "/blog"], ["Open Graph assets", "/open-graph"], ["About", "/about"], ["Contact", "/contact"], ["Privacy", "/privacy"], ["Sitemap", "/sitemap-index.xml"], ["Robots", "/robots.txt"]] as const;
 ---
-
-<footer class="container" role="contentinfo" aria-label="Site footer" style="padding: 2rem 0 3rem;">
-  <div class="card p-16">
-    <div class="muted footer-inner">
-      
-      <!-- LEFT: Site identity -->
-      <span>© {new Date().getFullYear()} WTE Wiki</span>
-
-      <!-- RIGHT: Links + WTE -->
-      <span class="footer-right">
-        <a href="/sitemap-index.xml">Sitemap</a>
-        <span aria-hidden="true">·</span>
-        <a href="/robots.txt">Robots</a>
-
-        <span class="footer-divider" aria-hidden="true">·</span>
-
-        <a
-          href="https://whytrashearth.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="wte-link"
-        >
-          © WhyTrashEarth
-        </a>
-      </span>
-
-    </div>
-  </div>
-</footer>
-
-<style>
-  .footer-inner {
-    display: flex;
-    gap: 0.75rem;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .footer-right {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-    flex-wrap: wrap;
-  }
-
-  .footer-divider {
-    opacity: 0.5;
-  }
-
-  .wte-link {
-    font-size: 0.85rem;
-    text-decoration: none;
-    opacity: 0.6;
-    transition: opacity 0.2s ease;
-    letter-spacing: 0.05em;
-  }
-
-  .wte-link:hover {
-    opacity: 1;
-  }
-</style>
+<footer class="container site-footer" role="contentinfo" aria-label="Site footer"><div class="card p-24">
+  <div class="footer-top"><div><p class="eyebrow">WTE Wiki</p><p class="footer-copy">A growing public record for the WhyTrashEarth network.</p></div><a href="https://whytrashearth.org" target="_blank" rel="noopener noreferrer" class="wte-link">WhyTrashEarth.org <span aria-hidden="true">↗</span></a></div>
+  <nav class="footer-nav" aria-label="Footer navigation">{links.map(([label, href]) => <a href={href} class:list={{ active: isCurrent(href) }} aria-current={isCurrent(href) ? "page" : undefined}>{label}</a>)}</nav>
+  <div class="footer-bottom"><span>© {new Date().getFullYear()} WTE Wiki</span><a class="footer-logo" href="/" aria-label="WTE Wiki home"><img src="/images/whytrashearth-logo-giri.webp" width="460" height="460" alt="WhyTrashEarth Earth logo" /></a></div>
+</div></footer>
+<style>.site-footer{padding-top:2rem;padding-bottom:3rem}.footer-top,.footer-bottom{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:space-between}.footer-copy{margin:0;color:var(--color-muted)}.wte-link{color:var(--color-text);font-weight:700}.footer-nav{display:flex;gap:.65rem 1rem;flex-wrap:wrap;border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);margin:1.5rem 0;padding:1rem 0}.footer-nav a{color:var(--color-text)}.active{color:var(--color-accent)!important;font-weight:700}.footer-logo{display:inline-flex;align-items:center;justify-content:center}.footer-logo img{display:block;width:3.2rem;height:3.2rem;transition:transform 160ms ease}.footer-logo:hover img{transform:scale(1.1)}@media (prefers-reduced-motion:reduce){.footer-logo img{transition:none}}</style>
