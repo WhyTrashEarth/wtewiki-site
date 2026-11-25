@@ -1,22 +1,15 @@
 ---
-import BaseLayout from "@/layouts/BaseLayout.astro";
-import { t } from "@/i18n/ui";
-const locale = Astro.currentLocale;
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
 ---
-<BaseLayout title={t(locale, "contact_title")} description="Contact WhyTrashEarth.">
-<section class="card p-24" aria-labelledby="contact-title">
-  <h1 id="contact-title" class="h1">Contact Us</h1>
-
-  <p class="muted" style="max-width: 75ch; line-height: 1.65;">
-    We prefer direct communication. If you have a question, idea, or would like to work with us, please reach out via email.
-  </p>
-
-  <p style="margin-top: 1.5rem;">
-    <a class="button" href="mailto:wte23@pm.me?subject=Email%20from%20WTE%20Wiki">Email WTE Wiki</a>
-  </p>
-
-  <p class="muted" style="margin-top: 16px; max-width: 75ch; line-height: 1.65;">
-    This opens your email app with the subject line “Email from WTE Wiki.”
-  </p>
-</section>
+<BaseLayout title="Contact" description="Contact WhyTrashEarth by email, on X at @WhyTrashEarth, or on Discord using the username whytrashearth.">
+  <article class="content">
+    <header class="page-heading"><p class="eyebrow">A direct line</p><h1>Get in touch.</h1><p class="intro">Questions, ideas, corrections, or a chance to work together — we’d like to hear from you.</p></header>
+    <ul class="directory-list">
+      <li><a href="mailto:wte23@pm.me?subject=Email%20from%20WTE%20Wiki"><Icon name="mail" /><span class="link-copy"><strong>Email WhyTrashEarth</strong><span>wte23@pm.me</span></span><Icon name="arrow" /></a></li>
+      <li><a href="https://x.com/WhyTrashEarth"><Icon name="social" /><span class="link-copy"><strong>Message us on X</strong><span>@WhyTrashEarth</span></span><Icon name="external" /></a></li>
+    </ul>
+    <section class="note"><h2>Prefer Discord?</h2><p>To reach us on Discord, add us by username: <strong>whytrashearth</strong>.</p><p>Our Discord server is private.</p></section>
+    <div class="prose"><h2>Response times</h2><p>We’re busy working on a range of public and private environmental projects, so response times may vary.</p><p>Thank you for your patience.</p><a class="text-link" href="/socials/">All official socials <Icon name="arrow" /></a></div>
+  </article>
 </BaseLayout>

@@ -1,0 +1,21 @@
+// Existing public inventory; descriptions retained from the published wiki.
+export const projects = [
+  ["AiriVenturi.com", "https://airiventuri.com", "Home of Airi Venturi, International Air Quality Consultant."],
+  ["AirVentAware.org", "https://airventaware.org", "Air-quality awareness and ventilation cleanliness."],
+  ["CrowCRB.org", "https://crowcrb.org", "Community-focused environmental documentation and initiatives."],
+  ["EcoWasteWorldwide.org", "https://ecowasteworldwide.org", "A global perspective on waste systems and environmental impact."],
+  ["EndFast.fashion", "https://endfast.fashion", "Addressing waste and impact from fast fashion systems."],
+  ["GlobalAirRegistry.org", "https://globalairregistry.org", "A concept for tracking and standardizing air-quality data globally."],
+  ["MakeTheGoal.org", "https://makethegoal.org", "Measurable environmental progress for FIFA World Cup 2026."],
+  ["Mekong.Earth", "https://mekong.earth", "Environmental focus on the Mekong region and its ecosystems."],
+  ["Menhaden.eco", "https://menhaden.eco", "Research and awareness surrounding menhaden fishing and ecosystem impact."],
+  ["NV.horse", "https://nv.horse", "A neutral informational resource related to horse topics in Nevada."],
+  ["PlasticFree.Flights", "https://plasticfree.flights", "Exploring less plastic use in aviation."],
+  ["ReLiveNV.org", "https://relivenv.org", "Regional environmental initiatives focused on Nevada."],
+  ["SanDiegoSewage.org", "https://sandiegosewage.org", "Sewage infrastructure and coastal environmental concerns."],
+  ["UXO.INFO", "https://uxo.info", "Documentation and awareness of unexploded ordnance and environmental impact."],
+  ["Whaling.Watch", "https://whaling.watch", "Tracking and awareness related to global whaling activity."],
+  ["WhyTrashEarth.org", "https://whytrashearth.org", "The primary site for WhyTrashEarth and its overall mission."],
+  ["WhyTrashTahoe.org", "https://whytrashtahoe.org", "Environmental efforts focused on Lake Tahoe and surrounding areas."],
+  ["WineWaste.org", "https://winewaste.org", "Waste and sustainability in wine production."],
+];

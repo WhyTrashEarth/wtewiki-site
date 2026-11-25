@@ -1,6 +1,15 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
 ---
-<BaseLayout title="Start Here" description="An introduction to WTE Wiki and the WhyTrashEarth network.">
-  <article class="content card p-24"><p class="eyebrow">Start here</p><h1>Welcome to WTE Wiki.</h1><p>WTE Wiki is the growing public record for WhyTrashEarth: a place to connect projects, preserve context, and make work easier to understand over time.</p><hr class="hr" /><h2>What you’ll find</h2><p>The <a href="/projects">Projects directory</a> points to active initiatives across the network. <a href="/blog">Updates</a> collects new notes and progress as they are published. The <a href="/about">About page</a> explains the larger approach behind the work.</p><h2>How to use this archive</h2><p>Start with the topic that interests you. Some entries are active public sites; others are early concepts or developing records. This wiki will become more detailed as project histories, research, and documentation are added.</p></article>
+<BaseLayout title="Start here" description="An introduction to WTE Wiki: WhyTrashEarth’s public projects, cleanup records, updates, and the purpose of this growing archive.">
+  <article class="content">
+    <header class="page-heading"><p class="eyebrow">Start here</p><h1>Welcome to WTE Wiki.</h1><p class="intro">A place to connect projects, preserve context, and make the work of WhyTrashEarth easier to understand over time.</p></header>
+    <div class="prose"><h2>What you’ll find</h2><ul class="directory-list">
+    <li><a href="/projects/"><Icon name="projects" /><span class="link-copy"><strong>The projects</strong><span>Public sites and initiatives across the network.</span></span><Icon name="arrow" /></a></li>
+    <li><a href="/cleanups/"><Icon name="trash" /><span class="link-copy"><strong>The cleanup archive</strong><span>Photo galleries and video playlists, organized by year.</span></span><Icon name="arrow" /></a></li>
+    <li><a href="/blog/"><Icon name="notes" /><span class="link-copy"><strong>Updates</strong><span>New notes and progress as they are published.</span></span><Icon name="arrow" /></a></li>
+    <li><a href="/about/"><Icon name="info" /><span class="link-copy"><strong>The purpose behind it</strong><span>Our principles and approach to environmental work.</span></span><Icon name="arrow" /></a></li>
+    </ul><h2>How to use this archive</h2><p>Start with the topic that interests you. Some entries are active public sites; others are early concepts or developing records. This wiki will become more detailed as project histories, research, and documentation are added.</p><p>Not every project is public. <a href="/projects/#public-and-private">Read why some work remains private</a>.</p><p>To connect, visit <a href="/socials/">our official socials</a> or <a href="/contact/">contact us</a>.</p></div>
+  </article>
 </BaseLayout>

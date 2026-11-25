@@ -1,11 +1,25 @@
 ---
-const currentPath = Astro.url.pathname;
-const isCurrent = (href: string) => href === "/" ? currentPath === "/" : currentPath === href || currentPath.startsWith(`${href}/`);
-const links = [["Home", "/"], ["Start Here", "/start-here"], ["Projects", "/projects"], ["Updates", "/blog"], ["Open Graph assets", "/open-graph"], ["About", "/about"], ["Contact", "/contact"], ["Privacy", "/privacy"], ["Sitemap", "/sitemap-index.xml"], ["Robots", "/robots.txt"]] as const;
+import Icon from './Icon.astro';
+import { dateLabel } from '../data/page-dates.mjs';
+interface Props { updated?: string; }
+const { updated } = Astro.props;
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+const groups = [
+  { title: 'Explore', links: [['Start here', '/start-here/'], ['Projects', '/projects/'], ['Cleanups', '/cleanups/'], ['Updates', '/blog/']] },
+  { title: 'Connect', links: [['About WTE', '/about/'], ['Official socials', '/socials/'], ['Contact', '/contact/'], ['WhyTrashEarth.org', 'https://whytrashearth.org/']] },
+  { title: 'Resources', links: [['Privacy', '/privacy/'], ['Site map', '/sitemap/'], ['Sharing assets', '/open-graph/']] },
+];
 ---
-<footer class="container site-footer" role="contentinfo" aria-label="Site footer"><div class="card p-24">
-  <div class="footer-top"><div><p class="eyebrow">WTE Wiki</p><p class="footer-copy">A growing public record for the WhyTrashEarth network.</p></div><a href="https://whytrashearth.org" target="_blank" rel="noopener noreferrer" class="wte-link">WhyTrashEarth.org <span aria-hidden="true">↗</span></a></div>
-  <nav class="footer-nav" aria-label="Footer navigation">{links.map(([label, href]) => <a href={href} class:list={{ active: isCurrent(href) }} aria-current={isCurrent(href) ? "page" : undefined}>{label}</a>)}</nav>
-  <div class="footer-bottom"><span>© {new Date().getFullYear()} WTE Wiki</span><a class="footer-logo" href="/" aria-label="WTE Wiki home"><img src="/images/whytrashearth-logo-giri.webp" width="460" height="460" alt="WhyTrashEarth Earth logo" /></a></div>
-</div></footer>
-<style>.site-footer{padding-top:2rem;padding-bottom:3rem}.footer-top,.footer-bottom{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;justify-content:space-between}.footer-copy{margin:0;color:var(--color-muted)}.wte-link{color:var(--color-text);font-weight:700}.footer-nav{display:flex;gap:.65rem 1rem;flex-wrap:wrap;border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);margin:1.5rem 0;padding:1rem 0}.footer-nav a{color:var(--color-text)}.active{color:var(--color-accent)!important;font-weight:700}.footer-logo{display:inline-flex;align-items:center;justify-content:center}.footer-logo img{display:block;width:3.2rem;height:3.2rem;transition:transform 160ms ease}.footer-logo:hover img{transform:scale(1.1)}@media (prefers-reduced-motion:reduce){.footer-logo img{transition:none}}</style>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-identity">
+        <a class="brand" href="/" aria-label="WTE Wiki home"><img src="/images/whytrashearth-logo-giri.webp" width="460" height="460" loading="lazy" alt="" /><span>WTE<span class="brand-wiki">.Wiki</span><small>WhyTrashEarth</small></span></a>
+        <p>The public archive for the<br />WhyTrashEarth network.</p>
+        <span class="footer-since">Independent since 2016.</span>
+      </div>
+      {groups.map(group => <nav aria-label={`${group.title} footer links`}><h2>{group.title}</h2><ul>{group.links.map(([label, href]) => <li><a href={href} aria-current={current === href.replace(/\/$/, '') ? 'page' : undefined}>{label}{href.startsWith('https:') && <Icon name="external" />}</a></li>)}</ul></nav>)}
+    </div>
+    <div class="footer-bottom"><span>© {new Date().getUTCFullYear()} WhyTrashEarth · WTE Wiki</span>{updated && <span>Page updated <time datetime={updated}>{dateLabel(updated)}</time></span>}</div>
+  </div>
+</footer>

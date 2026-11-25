@@ -1,25 +1,14 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-const projects = [
-  ["AiriVenturi.com", "https://airiventuri.com", "Home of Airi Venturi, International Air Quality Consultant."],
-  ["AirVentAware.org", "https://airventaware.org", "Air-quality awareness and ventilation cleanliness."],
-  ["CrowCRB.org", "https://crowcrb.org", "Community-focused environmental documentation and initiatives."],
-  ["EcoWasteWorldwide.org", "https://ecowasteworldwide.org", "A global perspective on waste systems and environmental impact."],
-  ["EndFast.fashion", "https://endfast.fashion", "Addressing waste and impact from fast fashion systems."],
-  ["GlobalAirRegistry.org", "https://globalairregistry.org", "A concept for tracking and standardizing air-quality data globally."],
-  ["MakeTheGoal.org", "https://makethegoal.org", "Measurable environmental progress for FIFA World Cup 2026."],
-  ["Mekong.Earth", "https://mekong.earth", "Environmental focus on the Mekong region and its ecosystems."],
-  ["Menhaden.eco", "https://menhaden.eco", "Research and awareness surrounding menhaden fishing and ecosystem impact."],
-  ["NV.horse", "https://nv.horse", "A neutral informational resource related to horse topics in Nevada."],
-  ["PlasticFree.Flights", "https://plasticfree.flights", "Exploring less plastic use in aviation."],
-  ["ReLive.org", "https://relivenv.org", "Regional environmental initiatives focused on Nevada."],
-  ["SanDiegoSewage.org", "https://sandiegosewage.org", "Sewage infrastructure and coastal environmental concerns."],
-  ["UXO.INFO", "https://uxo.info", "Documentation and awareness of unexploded ordnance and environmental impact."],
-  ["Whaling.Watch", "https://whaling.watch", "Tracking and awareness related to global whaling activity."],
-  ["WhyTrashEarth.org", "https://whytrashearth.org", "The primary site for WhyTrashEarth and its overall mission."],
-  ["WhyTrashTahoe.org", "https://whytrashtahoe.org", "Environmental efforts focused on Lake Tahoe and surrounding areas."],
-  ["WineWaste.org", "https://winewaste.org", "Waste and sustainability in wine production."],
-];
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { projects } from '../data/projects';
+const unavailable: Record<string, string> = { 'https://airventaware.org': 'Certificate needs attention', 'https://crowcrb.org': 'Website currently unavailable' };
 ---
-<BaseLayout title="Projects" description="A directory of projects in the WhyTrashEarth network."><section class="content" aria-labelledby="projects-title"><p class="eyebrow">Directory</p><h1 id="projects-title">Projects</h1><p class="intro">A growing index of public sites and initiatives connected to the WhyTrashEarth network.</p><div class="grid">{projects.map(([name, url, description]) => (<a class="project card p-24" href={url} target="_blank" rel="noopener noreferrer"><h2>{name}</h2><p>{description}</p><span aria-hidden="true">Visit site →</span></a>))}</div></section></BaseLayout>
-<style>.intro{font-size:1.15rem;margin-bottom:2rem}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:1rem}.project{display:flex;flex-direction:column;min-height:13rem;text-decoration:none;transition:transform .16s ease,border-color .16s ease}.project:hover{border-color:var(--color-accent);transform:translateY(-3px)}.project h2{font-size:1.25rem}.project p{color:var(--color-muted);margin:0}.project span{color:var(--color-accent);font-weight:700;margin-top:auto;padding-top:1rem}</style>
+<BaseLayout title="Projects" description="Explore the WhyTrashEarth project directory, with public sites, developing ideas, and an explanation of the work that remains private.">
+  <section aria-labelledby="projects-title">
+    <header class="page-heading"><p class="eyebrow">The WhyTrashEarth network</p><h1 id="projects-title">Projects.</h1><p class="intro">A growing index of public sites and initiatives connected to WhyTrashEarth. Some are established resources; others are developing ideas.</p></header>
+    <div class="project-grid">{projects.map(([name, url, description]) => <article class="project card"><h2>{name}</h2><p>{description}</p>{unavailable[url] ? <div class="project-status"><span>{unavailable[url]}</span><small>Checked November 25, 2026. We’ll restore the link when it works safely.</small></div> : <a class="text-link" href={url} aria-label={`Visit ${name}`}>Visit site <Icon name="external" /></a>}</article>)}</div>
+    <section class="note content" id="public-and-private" aria-labelledby="private-title"><p class="eyebrow">Public &amp; private projects</p><h2 id="private-title">What this directory includes.</h2><p>Not all WhyTrashEarth projects are publicly documented. Many remain private for a variety of reasons: ongoing research, confidentiality, active correspondence, or respect for the individuals and organizations involved.</p><p>This wiki represents our publicly available body of work, not the entirety of our efforts. We share information when it is appropriate to do so.</p><p>A listing describes a project’s focus; it does not imply a completed project, a formal partnership, or a measured outcome. <a href="/contact/">Contact us</a> for a correction or a question about a public project.</p></section>
+  </section>
+</BaseLayout>
+<style>.project-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem}.project{padding:1.7rem;display:flex;flex-direction:column;align-items:flex-start}.project h2{font-size:1.3rem;overflow-wrap:anywhere}.project p{font-size:1rem;color:var(--color-muted)}.project .text-link,.project-status{margin-top:auto;font-size:.9rem}.project-status{color:var(--color-accent);border-top:1px solid var(--color-line);padding-top:.65rem}.project-status span{font-weight:700;display:block}.project-status small{display:block;color:var(--color-muted);font-size:.8rem;margin-top:.3rem}.note.content{margin:3rem auto 0}@media(max-width:900px){.project-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:550px){.project-grid{grid-template-columns:1fr}}</style>

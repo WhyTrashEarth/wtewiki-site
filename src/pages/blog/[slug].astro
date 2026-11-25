@@ -10,12 +10,12 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const { Content } = await render(post);
 ---
-<BaseLayout title={post.data.title} description={post.data.description ?? "Blog post."}>
+<BaseLayout title={post.data.title} description={post.data.description ?? "Blog post."} updated={(post.data.updatedDate ?? post.data.pubDate).toISOString().slice(0, 10)}>
   <article class="card p-24" aria-labelledby="post-title">
     <header>
       <h1 id="post-title" class="h1">{post.data.title}</h1>
       <p class="muted" style="margin-top:0.35rem;">
-        {post.data.pubDate.toLocaleDateString()}
+        {post.data.pubDate.toLocaleDateString("en-US", {year:"numeric", month:"long", day:"numeric", timeZone:"UTC"})}
       </p>
       <hr class="hr" />
     </header>

@@ -7,6 +7,7 @@ export type Props = {
   canonical?: string; // optional explicit canonical
   ogImage?: string;   // absolute or site-relative (/og/og-default.png)
   noIndex?: boolean;
+  updated?: string;
 };
 
 const {
@@ -14,18 +15,26 @@ const {
   description = SITE.description,
   canonical,
   ogImage = "/og/wtewiki/default-v1.jpg",
-  noIndex = false
+  noIndex = false,
+  updated
 } = Astro.props;
 
 const site = Astro.site?.toString().replace(/\/$/, "") ?? SITE.canonicalBase ?? "";
-const url = new URL(Astro.url.pathname, site || Astro.url.origin).toString();
+const pathname = Astro.url.pathname.endsWith("/") ? Astro.url.pathname : `${Astro.url.pathname}/`;
+const url = new URL(pathname, site || Astro.url.origin).toString();
 
 const finalTitle = title ? `${title} · ${SITE.name}` : SITE.name;
 const finalCanonical = canonical ?? url;
 
 const ogUrl = finalCanonical;
 const ogImg = ogImage.startsWith("http") ? ogImage : (site ? `${site}${ogImage}` : ogImage);
-const ogImageAlt = `${SITE.name} — ${description}`;
+const ogImageAlt = 'WTE Wiki — WhyTrashEarth';
+const structuredData = {
+  '@context': 'https://schema.org', '@type': 'WebPage',
+  name: finalTitle, description, url: finalCanonical,
+  ...(updated ? { dateModified: updated } : {}),
+  isPartOf: { '@type': 'WebSite', name: SITE.name, url: site },
+};
 ---
 
 <meta charset="utf-8" />
@@ -37,7 +46,7 @@ const ogImageAlt = `${SITE.name} — ${description}`;
 
 <link rel="icon" type="image/png" href="/favicon.png" />
 
-{noIndex ? <meta name="robots" content="noindex,nofollow" /> : null}
+{noIndex ? <meta name="robots" content="noindex,follow" /> : null}
 
 <!-- Open Graph -->
 <meta property="og:type" content="website" />
@@ -56,3 +65,9 @@ const ogImageAlt = `${SITE.name} — ${description}`;
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImg} />
 <meta name="twitter:image:alt" content={ogImageAlt} />
+
+<meta name="theme-color" content="#080808" />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:locale" content="en_US" />
+<meta name="twitter:site" content="@WhyTrashEarth" />
+{!noIndex && <script is:inline type="application/ld+json" set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')} />}

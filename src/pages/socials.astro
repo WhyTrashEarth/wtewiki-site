@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { socials } from '../data/socials';
+---
+<BaseLayout title="Official socials" description="Find the official WhyTrashEarth accounts on X, Instagram, YouTube, GitHub, and Discord, together in one place.">
+  <section class="content" aria-labelledby="socials-title">
+    <header class="page-heading"><p class="eyebrow">WhyTrashEarth accounts</p><h1 id="socials-title">Official socials.</h1><p class="intro">Find WhyTrashEarth on the following platforms.</p></header>
+    <ul class="directory-list">{socials.map(s => <li><a href={s.url} rel="me"><Icon name={s.icon} /><span class="link-copy"><strong>{s.name} <span class="muted">· {s.handle}</span></strong><span>{s.description}</span></span><Icon name="external" /></a></li>)}</ul>
+    <section class="note" aria-labelledby="discord-title"><h2 id="discord-title"><Icon name="social" /> Discord</h2><p>To reach us on Discord, add us by username: <strong>whytrashearth</strong>.</p><p>Our Discord server is private.</p></section>
+    <p class="muted">These accounts are also listed on <a href="https://whytrashearth.org/official-socials/">WhyTrashEarth’s official socials page</a>. Unsure whether an account is ours? <a href="/contact/">Ask us</a>.</p>
+  </section>
+</BaseLayout>

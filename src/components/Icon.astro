@@ -1,0 +1,20 @@
+---
+interface Props { name?: string; class?: string; }
+const { name = 'arrow', class: className = '' } = Astro.props;
+const paths: Record<string, string> = {
+  arrow: 'M5 12h14m-6-6 6 6-6 6',
+  external: 'M7 17 17 7M7 7h10v10',
+  archive: 'M4 4h16v5H4zM6 9v11h12V9M10 13h4',
+  projects: 'M3 3h7v7H3zM14 3h7v7h-7zM3 14h7v7H3zM14 14h7v7h-7z',
+  trash: 'M3 6h18M9 6V3h6v3M5 6l1 15h12l1-15M10 10v7M14 10v7',
+  notes: 'M5 3h14v18H5zM9 8h6M9 12h6M9 16h3',
+  social: 'M8 6h12v10h-6l-4 4v-4H8zM4 3v10',
+  mail: 'M3 5h18v14H3zM3 5l9 8 9-8',
+  photo: 'M3 4h18v16H3zM3 16l5-5 4 4 3-3 6 6M15 8h.01',
+  video: 'M4 4h16v16H4zM10 8l6 4-6 4z',
+  info: 'M12 11v6M12 7h.01M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0',
+  lock: 'M5 10h14v11H5zM8 10V6a4 4 0 0 1 8 0v4M12 14v3',
+  globe: 'M22 12a10 10 0 1 1-20 0 10 10 0 0 1 20 0M2 12h20M12 2c-5 5-5 15 0 20M12 2c5 5 5 15 0 20',
+};
+---
+<svg class:list={['icon', className]} width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d={paths[name] ?? paths.arrow} /></svg>

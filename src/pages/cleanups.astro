@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+import { archives } from '../data/cleanups';
+---
+<BaseLayout title="Cleanup archive · 2016–2026" description="Browse all 12 linked WhyTrashEarth cleanup photo galleries from 2016–2026, the 2017 and 2018 video playlists, and the wider cleanup video archive.">
+  <section class="content" aria-labelledby="cleanup-title">
+    <header class="page-heading"><p class="eyebrow">The field record · 2016–2026</p><h1 id="cleanup-title">Cleanup archive.</h1><p class="intro">WhyTrashEarth’s public cleanup photo galleries and video playlists, collected in one place.</p></header>
+    <div class="section-heading"><h2>Browse by year</h2><p class="eyebrow">Photos &amp; field logs</p></div>
+    <ol class="archive-years">{archives.map(archive => <li><h3>{archive.year}</h3><ul>{archive.galleries.map((url, i) => <li><a href={url}><Icon name="photo" /><span>{archive.year} photo gallery{archive.galleries.length > 1 ? ` ${i + 1}` : ''}</span><Icon name="external" /></a></li>)}{'playlist' in archive && archive.playlist && <li><a href={archive.playlist}><Icon name="video" /><span>{archive.year} video playlist</span><Icon name="external" /></a></li>}</ul></li>)}</ol>
+    <a class="button archive-videos" href="https://www.youtube.com/playlist?list=PLQ0iHkoaSCGHNrS2SUcy1xn0MPJJDIymB"><Icon name="video" /> All cleanup videos playlist <Icon name="external" /></a>
+    <section class="note" aria-labelledby="record-title"><h2 id="record-title">A record, with its limits.</h2><p>These galleries and playlists document selected work. The all-videos playlist is incomplete, and the public archive does not include every cleanup or every file.</p><p>Some older album titles include historical piece counts. They are preserved at the source; they should not be added together as an independently verified total.</p><p>Albums open on Google Photos and videos open on YouTube. Those services have their own privacy practices.</p></section>
+    <p>For context, visit the <a href="https://whytrashearth.org/cleanups/">main WhyTrashEarth cleanup page</a>. For a missing link or a question about a record, <a href="/contact/">get in touch</a>.</p>
+  </section>
+</BaseLayout>
+<style>.archive-years,.archive-years ul{list-style:none;margin:0;padding:0}.archive-years>li{display:grid;grid-template-columns:100px 1fr;gap:1.5rem;padding:1.2rem 0;border-bottom:1px solid var(--color-line);margin:0}.archive-years h3{font-size:1.65rem;margin:.25rem 0}.archive-years li li{margin:0}.archive-years a{display:flex;align-items:center;gap:.65rem;min-height:44px;text-decoration:none}.archive-years a:hover span{text-decoration:underline}.archive-years a .icon:first-child{color:var(--color-accent)}.archive-years a .icon:last-child{width:.9rem;height:.9rem}.archive-videos{margin-top:2rem}@media(max-width:480px){.archive-years>li{grid-template-columns:1fr;gap:.3rem}.archive-videos{font-size:.95rem;width:100%}}</style>

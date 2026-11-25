@@ -1,79 +1,17 @@
 ---
-import BaseLayout from "../layouts/BaseLayout.astro";
-
-const pageTitle = "Privacy Policy";
-const pageDescription =
-  "Privacy policy for this website, including information about contact forms, analytics, and general site usage.";
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
-
-<BaseLayout title={pageTitle} description={pageDescription}>
-  <article class="content card p-24">
-      <h1>Privacy Policy</h1>
-      <p><strong>Effective date:</strong> March 13, 2026</p>
-
-      <p>
-        This website is operated by WTEWiki or its related project owner.
-        We respect your privacy and aim to collect as little personal information
-        as possible.
-      </p>
-
-      <h2>Information We Collect</h2>
-      <p>
-        We may receive information that you voluntarily provide, such as when you
-        contact us by email or through a contact form.
-      </p>
-
-      <h2>Analytics</h2>
-      <p>
-        This website may use basic analytics tools to understand general site
-        traffic and improve the website experience. These tools may collect
-        limited technical information such as browser type, device type, pages
-        visited, and approximate usage patterns.
-      </p>
-
-      <h2>Contact Forms and Email</h2>
-      <p>
-        If you contact us, we may keep your message and contact information for
-        the purpose of replying and maintaining communication related to your
-        inquiry.
-      </p>
-
-      <h2>Cookies</h2>
-      <p>
-        This website may use basic cookies or similar technologies if required
-        for analytics, embedded content, or normal site functionality.
-      </p>
-
-      <h2>Third-Party Services</h2>
-      <p>
-        Some pages may link to or embed content from third-party services. Those
-        services may collect data according to their own privacy policies.
-      </p>
-
-      <h2>Data Sharing</h2>
-      <p>
-        We do not sell personal information. We only share information when
-        necessary to operate the site, respond to inquiries, comply with the law,
-        or protect the integrity of the project.
-      </p>
-
-      <h2>Your Choices</h2>
-      <p>
-        You may choose not to contact us or submit information through forms. If
-        you previously contacted us and want your message deleted where
-        reasonably possible, you may request that by email.
-      </p>
-
-      <h2>Changes to This Policy</h2>
-      <p>
-        This policy may be updated from time to time. Any updates will be posted
-        on this page with a revised effective date.
-      </p>
-
-      <h2>Contact</h2>
-      <p>
-        If you have privacy-related questions, please contact us through the
-        contact page on this website.
-      </p>
+<BaseLayout title="Privacy" description="How WTE Wiki works: static pages, Cloudflare delivery, external links, and direct contact. A plain-English privacy note based on the site’s current setup.">
+  <article class="content">
+    <header class="page-heading"><p class="eyebrow">A plain-English note</p><h1>Privacy.</h1><p class="intro">What happens when you read this wiki or get in touch.</p><p class="muted">Last reviewed <time datetime="2026-11-25">November 25, 2026</time></p></header>
+    <div class="prose card p-24">
+      <p>WTE Wiki is the public archive and project directory for WhyTrashEarth. This note covers <strong>wte.wiki</strong>; other WTE sites and linked services may work differently.</p>
+      <h2>Reading the wiki</h2><p>This is a static website. There are no visitor accounts, comment boxes, contact forms, payments, or newsletter sign-ups. Fonts and the Earth logo are served with the site. Social posts, photo galleries, and videos are links, not embedded players or feeds.</p>
+      <h2>Page views, loading speed, and cookies</h2><p>Cloudflare adds a performance-measurement script to the live site. It measures page views and how quickly pages load. Reports can include the page address, the referring page when available, and browser performance measurements.</p><p>Cloudflare says this script does not use cookies, local storage, or other browser storage, and does not fingerprint visitors. The site’s own code also does not set cookies or use browser storage. See <a href="https://developers.cloudflare.com/speed/observatory/rum-beacon/">what Cloudflare’s performance script collects</a>.</p><p>With JavaScript turned off, the wiki remains readable and this script does not run. Cloudflare still handles the connection used to deliver the page.</p>
+      <h2>Cloudflare and connection information</h2><p>Cloudflare delivers this website. It processes technical connection information, including IP addresses and request information, to provide its services. Its dashboard reports traffic statistics such as request counts and data transferred. See <a href="https://www.cloudflare.com/privacypolicy/">Cloudflare’s privacy policy</a>.</p><p>The live site also sends network-error-reporting headers. Supporting browsers can send Cloudflare reports about failed connections, including the affected page address and error details. See <a href="https://developers.cloudflare.com/network-error-logging/">Cloudflare’s explanation of network error reports</a>.</p>
+      <h2>When you contact us</h2><p>Email links open your email service. X and Discord messages go through those platforms. If you contact WhyTrashEarth, we receive the message and the contact details you share so we can reply or follow up. Some correspondence may be kept as part of project history.</p><p>Please share only what is needed for your inquiry. For a privacy question or a request concerning a message you sent, <a href="/contact/">contact us directly</a>.</p>
+      <h2>Links to other services</h2><p>Following a link to Google Photos, YouTube, a social account, or another project takes you to a separate service. That service’s privacy practices apply. Merely reading the cleanup or socials page does not load those services’ galleries, videos, or feeds.</p>
+      <h2>Changes to this note</h2><p>We’ll revise this page when the website’s practices change. The review date above records the most recent review of this page.</p>
+    </div>
   </article>
 </BaseLayout>

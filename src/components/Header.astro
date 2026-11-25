@@ -1,18 +1,13 @@
 ---
-import { t } from "@/i18n/ui";
-const locale = Astro.currentLocale;
-const currentPath = Astro.url.pathname;
-const isCurrent = (href: string) => href === "/" ? currentPath === "/" : currentPath === href || currentPath.startsWith(`${href}/`);
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+const links = [['Projects', '/projects/'], ['Cleanups', '/cleanups/'], ['Updates', '/blog/'], ['About', '/about/'], ['Socials', '/socials/']];
 ---
-<header class="container" role="banner" aria-label="Site header" style="padding-top:1.25rem;">
-  <nav aria-label="Primary" class="site-nav">
-    <a href="/" class:list={["site-name", { active: isCurrent("/") }]} aria-current={isCurrent("/") ? "page" : undefined}>WTE Wiki <span aria-hidden="true">●</span></a>
-    <div class="nav-links">
-      <a href="/projects" class:list={{ active: isCurrent("/projects") }} aria-current={isCurrent("/projects") ? "page" : undefined}>Projects</a>
-      <a href="/blog" class:list={{ active: isCurrent("/blog") }} aria-current={isCurrent("/blog") ? "page" : undefined}>Updates</a>
-      <a href="/about" class:list={{ active: isCurrent("/about") }} aria-current={isCurrent("/about") ? "page" : undefined}>{t(locale, "nav_about")}</a>
-      <a href="/contact" class:list={{ active: isCurrent("/contact") }} aria-current={isCurrent("/contact") ? "page" : undefined}>{t(locale, "nav_contact")}</a>
-    </div>
+<header class="site-header">
+  <nav class="container header-inner" aria-label="Primary">
+    <a href="/" class="brand" aria-label="WTE Wiki home" aria-current={current === '/' ? 'page' : undefined}>
+      <img src="/images/whytrashearth-logo-giri.webp" width="460" height="460" alt="" fetchpriority="high" />
+      <span>WTE<span class="brand-wiki">.Wiki</span><small>WhyTrashEarth</small></span>
+    </a>
+    <div class="nav-links">{links.map(([label, href]) => <a href={href} aria-current={current === href.replace(/\/$/, '') || current.startsWith(href) ? 'page' : undefined}>{label}</a>)}</div>
   </nav>
 </header>
-<style>.site-nav{display:flex;gap:1rem;align-items:center;justify-content:space-between}.site-name{font-weight:800;letter-spacing:-.02em;text-decoration:none}.site-name span{color:var(--color-accent)}.nav-links{display:flex;gap:.85rem;flex-wrap:wrap;justify-content:flex-end}.active{color:var(--color-accent);font-weight:700}</style>
